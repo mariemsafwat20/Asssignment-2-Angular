@@ -1,0 +1,52 @@
+<div class="home">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid my-3">
+              <a class="navbar-brand" routerLink="home">
+                <i class="fa-solid fa-cart-shopping text-success"></i>
+                FreshCart
+            </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul *ngIf="isLogin" class="navbar-nav m-auto mt-2 mt-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="home" routerLinkActive="text-success">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="category" routerLinkActive="text-success">Categories</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="brands" routerLinkActive="text-success">Brands</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="products" routerLinkActive="text-success">Products</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="wishlist" routerLinkActive="text-success">Wishlist</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="mycart" routerLinkActive="text-success">Cart</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="profile" routerLinkActive="text-success">Profile</a>
+                  </li>
+                </ul>
+                <div class="form-inline ms-auto my-2 my-lg-0">
+                    <i class="fa-brands fa-facebook px-1"></i>
+                    <i class="fa-brands fa-twitter px-1"></i>
+                    <i class="fa-brands fa-instagram px-1"></i>
+                    <i class="fa-brands fa-behance px-1"></i>
+                    <i class="fa-brands fa-youtube px-1"></i>
+
+                    <a *ngIf="!isLogin" class="nav-link d-inline-block px-2" routerLink="signin">Login</a>
+                    <a *ngIf="!isLogin" class="nav-link d-inline-block px-2" routerLink="signup">Register</a>
+                    <a *ngIf="isLogin" (click)="logOut()" class="nav-link d-inline-block px-2">Logout</a>
+                </div>
+              </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
