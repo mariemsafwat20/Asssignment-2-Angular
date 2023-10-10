@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
@@ -7,16 +7,19 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   catData:any[] = [];
   prodData:any[] = [];
   brandData:any[] = [];
 
   constructor(private _DataService:DataService) {
+  }
+  
+  ngOnInit(): void {
     this.getCat()
     this.getProd()
-    this.getBrand()
+    this.getBrand()  
   }
 
   getCat(){

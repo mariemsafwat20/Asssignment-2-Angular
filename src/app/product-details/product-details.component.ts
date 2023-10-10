@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -9,7 +9,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent implements OnInit{
   productId:any;
   productDetails:any;
 
@@ -18,7 +18,10 @@ export class ProductDetailsComponent {
       this.productId = param.get('id');
     })
 
-    this.getDetails();
+  }
+  
+  ngOnInit(): void {
+    this.getDetails();      
   }
 
   getDetails(){
