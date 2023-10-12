@@ -13,12 +13,14 @@ import { SignupComponent } from './signup/signup.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { authguardGuard } from './authguard.guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'signin', pathMatch:'full'},
   {path:'signin', component:SigninComponent},
   {path:'signup', component:SignupComponent},
   {path:'forgotPassword', component:ForgotPasswordComponent},
+  {path:'resetPassword',component:ResetPasswordComponent},
   {path:'home', canActivate:[authguardGuard], component:HomeComponent},
   {path:'category', canActivate:[authguardGuard], component:CategoriesComponent},
   {path:'products', canActivate:[authguardGuard], component:ProductsComponent},

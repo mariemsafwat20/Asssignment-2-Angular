@@ -21,6 +21,7 @@ import { BrowserAnimationsModule  } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MainsliderComponent } from './mainslider/mainslider.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     SigninComponent,
     ProductDetailsComponent,
     MainsliderComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
