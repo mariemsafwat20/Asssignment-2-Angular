@@ -14,7 +14,7 @@ export class AuthService {
     if(localStorage.getItem('userToken') != null){
       this.decodedUserToken();
     }
-   }
+  }
 
   signup(formData:any):Observable<any>{
     return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,formData);
@@ -23,7 +23,7 @@ export class AuthService {
   login(formData:any):Observable<any>{
     return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`,formData);
   }
-
+  
   decodedUserToken(){
     let encodedToken = JSON.stringify(localStorage.getItem('userToken'))
     let decodedToken:any = jwtDecode(encodedToken);
@@ -36,6 +36,18 @@ export class AuthService {
     localStorage.removeItem('userToken');
     this.userData.next(null);
     this._Router.navigate(['./signin']);
+  }
+
+  forgetPassword(formData:any):Observable<any>{
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/forgotPasswords`,formData);
+  }
+
+  verifyCode(formData:any):Observable<any>{
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`,formData);
+  }
+
+  resetPassword(formData:any):Observable<any>{
+    return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`,formData);
   }
 }
 
