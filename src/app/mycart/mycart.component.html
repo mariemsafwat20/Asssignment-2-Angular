@@ -1,15 +1,15 @@
 <div class="bg-main-light my-5 p-5">
     <h2>Shop Cart</h2>
-    <h5 class="text-main">Total Price:{{cartDetails.totalCartPrice}}</h5>
-    <div class="row my-3 py-2 border-bottom" *ngFor="let product of cartDetails.products">
+    <h5 class="text-main">Total Price:{{cartDetails?.totalCartPrice}}</h5>
+    <div class="row my-3 py-2 border-bottom" *ngFor="let product of cartDetails?.products">
         <div class="col-md-1">
-            <img [src]="product.product.imageCover" alt="product.product.title" class="w-100"/>
+            <img [src]="product.product.imageCover" [alt]="product.product.title" class="w-100"/>
         </div>
         <div class="col-md-11 d-flex justify-content-between">
             <div>
                 <h6>{{product.product.title}}</h6>
                 <h6>Price: {{product.price}} EGP</h6>
-                <button class="btn btn-outline-danger">
+                <button (click)="removeItem(product.product._id)" class="btn btn-outline-danger">
                     <i class="fa-regular fa-trash-can mx-2"></i>
                     Remove
                 </button>

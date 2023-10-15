@@ -18,12 +18,16 @@ export class MycartComponent implements OnInit{
   getCart(){
     this._CartService.getLoggedUserCart().subscribe({
       next:(response)=>{
-        console.log(response.data);
         this.cartDetails = response.data      
-      },
-      error:(err)=>{
-        console.log(err);
-        
+      }
+    })
+  }
+  
+  removeItem(productId:string){
+    console.log("response");
+    this._CartService.removeCartItem(productId).subscribe({
+      next:()=>{
+        this.getCart()
       }
     })
   }

@@ -29,6 +29,12 @@ export class CartService {
       headers: this.header
     })
   }
-
+  
+  removeCartItem(id:string):Observable<any>{
+    return this._HttpClient.delete(`${this.baseUrl}/api/v1/cart/${id}`,
+    {
+      headers: this.header
+    })
+  }
 }
 
