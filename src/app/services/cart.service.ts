@@ -20,7 +20,6 @@ export class CartService {
     },{
       headers: this.header
     })
-  
   }
   
   getLoggedUserCart():Observable<any>{
@@ -33,6 +32,15 @@ export class CartService {
   removeCartItem(id:string):Observable<any>{
     return this._HttpClient.delete(`${this.baseUrl}/api/v1/cart/${id}`,
     {
+      headers: this.header
+    })
+  }
+  
+  updateCart(count:number,id:string):Observable<any>{
+    return this._HttpClient.put(`${this.baseUrl}/api/v1/cart/${id}`,
+    {
+      "count": count
+    },{
       headers: this.header
     })
   }

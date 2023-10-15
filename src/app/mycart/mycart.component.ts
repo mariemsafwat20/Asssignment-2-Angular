@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { count } from 'rxjs';
 
 @Component({
   selector: 'app-mycart',
@@ -26,6 +27,14 @@ export class MycartComponent implements OnInit{
   removeItem(productId:string){
     console.log("response");
     this._CartService.removeCartItem(productId).subscribe({
+      next:()=>{
+        this.getCart()
+      }
+    })
+  }
+  
+  updateCart(count:number,productId:string){
+    this._CartService.updateCart(count,productId).subscribe({
       next:()=>{
         this.getCart()
       }

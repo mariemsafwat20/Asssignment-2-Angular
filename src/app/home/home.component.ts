@@ -78,7 +78,6 @@ export class HomeComponent implements OnInit{
             title: 'Donee...',
             text: Response.message
           })
-          // Response.status.data.message == "Product added successfully to your cart"
         } 
       },
       error:(err)=>{
