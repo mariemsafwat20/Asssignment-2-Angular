@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit{
   prodData:any[] = [];
   brandData:any[] = [];
 
-  constructor(private _DataService:DataService) {
+  constructor(private _DataService:DataService,private _CartService:CartService) {
   }
   
   ngOnInit(): void {
@@ -63,6 +65,31 @@ export class HomeComponent implements OnInit{
   getBrand(){
     return this._DataService.getData(`brands`).subscribe((response) => {
       this.brandData = response.data.slice(8, 12);
+    })
+  }
+
+  addToCart(productId:string){
+    this._CartService.addToCart(productId).subscribe({
+      next:(Response)=>{
+        console.log(Response);
+        if(Response.status == "success"){
+          Swal.fire({
+            icon: 'success',
+            title: 'Donee...',
+            text: Response.message
+          })
+          // Response.status.data.message == "Product added successfully to your cart"
+        } 
+      },
+      error:(err)=>{
+        if(err.status == 500){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.statusMsg,
+          })
+        } 
+      }
     })
   }
 }

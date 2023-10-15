@@ -43,8 +43,8 @@
     <h2>Shop popular <span class="text-main">products</span></h2>
     <div class="row">
         <div *ngFor="let data of prodData;" class="col-md-3">
-            <a [routerLink]="['/details',data._id]" class="text-decoration-none">
-                <div class="rounded p-5 text-center product">
+            <div class="rounded p-5 text-center product">
+                <a [routerLink]="['/details',data._id]" class="text-decoration-none">
                     <img [src]="data.imageCover" class="w-100 imgStyle">
                     <p class="text-main">{{data.category.name}}</p>
                     <h6 class="fw-bold">{{data.title.split(' ').slice(0,2).join(' ')}}</h6>
@@ -55,9 +55,9 @@
                             {{data.ratingsAverage}}
                         </span>
                     </div>
-                    <button class="btn bg-main text-light w-100">Add +</button>
-                </div>
-            </a>
+                </a>
+                <button (click)="addToCart(data._id)" class="btn bg-main text-light w-100">Add +</button>
+            </div>
         </div>
         <!-- <div routerLink="/products" class="d-flex justify-content-end my-3">
             <i class="fa-solid fa-circle-arrow-right fa-2x text-success"></i>

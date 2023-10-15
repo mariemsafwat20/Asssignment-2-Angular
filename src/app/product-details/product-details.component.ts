@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import Swal from 'sweetalert2';
+import { CartService } from '../services/cart.service';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class ProductDetailsComponent implements OnInit{
   productId:any;
   productDetails:any;
 
-  constructor(private _Activated:ActivatedRoute, private _DataServices:DataService){
+  constructor(private _Activated:ActivatedRoute, private _DataServices:DataService,private _CartService:CartService){
     this._Activated.paramMap.subscribe((param)=>{
       this.productId = param.get('id');
     })
@@ -53,5 +55,28 @@ export class ProductDetailsComponent implements OnInit{
       }
     },
     nav: true
+  }
+
+  addToCart(productId:string){
+    this._CartService.addToCart(productId).subscribe({
+      next:(response)=>{
+        if(response.status == "success"){
+          Swal.fire({
+            icon: 'success',
+            title: 'Donee...',
+            text: response.message
+          })
+        } 
+      },
+      error:(err)=>{
+        if(err.status == 500){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.statusMsg,
+          })
+        } 
+      }
+    })
   }
 }
