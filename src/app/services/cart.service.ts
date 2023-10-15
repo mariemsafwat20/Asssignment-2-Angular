@@ -20,7 +20,15 @@ export class CartService {
     },{
       headers: this.header
     })
+  
   }
-}
+  
+  getLoggedUserCart():Observable<any>{
+    return this._HttpClient.get(`${this.baseUrl}/api/v1/cart`,
+    {
+      headers: this.header
+    })
+  }
 
+}
 
