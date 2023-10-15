@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,16 @@ export class CartService {
   header:any={
     token:localStorage.getItem('userToken')
   }
+  numOfCartItem = new BehaviorSubject(0);
+  
+  constructor(private _HttpClient:HttpClient) {
+    this.getLoggedUserCart().subscribe({
+      next:(response)=>{
+        this.numOfCartItem.next(response.numOfCartItems)
+      }
+    })
 
-  constructor(private _HttpClient:HttpClient) {}
+  }
 
   addToCart(id:string):Observable<any>{
     return this._HttpClient.post(`${this.baseUrl}/api/v1/cart`,

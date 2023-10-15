@@ -61,6 +61,8 @@ export class ProductDetailsComponent implements OnInit{
     this._CartService.addToCart(productId).subscribe({
       next:(response)=>{
         if(response.status == "success"){
+          this._CartService.numOfCartItem.next(response.numOfCartItems);
+
           Swal.fire({
             icon: 'success',
             title: 'Donee...',

@@ -73,6 +73,8 @@ export class HomeComponent implements OnInit{
       next:(Response)=>{
         console.log(Response);
         if(Response.status == "success"){
+          this._CartService.numOfCartItem.next(Response.numOfCartItems);
+
           Swal.fire({
             icon: 'success',
             title: 'Donee...',
