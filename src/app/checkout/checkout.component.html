@@ -1,0 +1,19 @@
+
+<form [formGroup]="paymentForm" (ngSubmit)="onlinePayment(paymentForm)" class="w-75 m-auto my-5">
+    <label>Details:</label>
+    <input formControlName="details" type="text" class="form-control">
+   
+    <label>Phone:</label>
+    <input formControlName="phone" type="tel" class="form-control">
+   
+    <label>city:</label>
+    <input formControlName="city" type="text" class="form-control">
+
+    <button [disabled]="paymentForm.invalid" type="submit" class="btn btn-success text-light my-3">
+        <!-- <span *ngIf="isLoading">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+        </span> -->
+        Pay
+    </button>
+
+</form>

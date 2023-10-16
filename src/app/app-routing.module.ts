@@ -14,6 +14,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { authguardGuard } from './authguard.guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'signin', pathMatch:'full'},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'profile', canActivate:[authguardGuard], component:ProfileComponent},
   {path:'wishlist', canActivate:[authguardGuard], component:WishlistComponent},
   {path:'mycart', canActivate:[authguardGuard], component:MycartComponent},
+  {path:'checkout', canActivate:[authguardGuard], component:CheckoutComponent},
   {path:'**', component:NotfoundComponent},
 ];
 

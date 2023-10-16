@@ -52,5 +52,14 @@ export class CartService {
       headers: this.header
     })
   }
+  
+  handlePayment(shippingAddress:any,id:string):Observable<any>{
+    return this._HttpClient.post(`${this.baseUrl}/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
+    {
+      shippingAddress: shippingAddress
+    },{
+      headers: this.header
+    })
+  }
 }
 
