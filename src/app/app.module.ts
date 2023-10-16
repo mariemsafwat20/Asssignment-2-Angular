@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -23,6 +23,7 @@ import { MainsliderComponent } from './mainslider/mainslider.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,13 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BrowserAnimationsModule,
     CarouselModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AddHeaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
