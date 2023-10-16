@@ -15,7 +15,7 @@ import { MycartComponent } from './mycart/mycart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BrowserAnimationsModule  } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -24,6 +24,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
+import { AddTitlePipe } from './add-title.pipe';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
     MainsliderComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AddTitlePipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   ],
   providers: [
     {

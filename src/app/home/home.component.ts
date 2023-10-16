@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit{
   catData:any[] = [];
   prodData:any[] = [];
   brandData:any[] = [];
+  searchValue:string = ''
 
   constructor(private _DataService:DataService,private _CartService:CartService) {
   }

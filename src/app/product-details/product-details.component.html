@@ -11,10 +11,12 @@
     </div>
     <div class="col-md-8">
         <div>
-            <h2 class="fw-bold">{{productDetails.title}}</h2>
-            <p class="pt-2 pb-5 text-muted">{{productDetails.description}}</p>
+            <h2 class="fw-bold">{{productDetails.title | uppercase}}</h2>
+            <p class="text-muted">{{productDetails.description | lowercase}}</p>
+            <p class="text-main">{{productDetails.category.name | addTitle}}</p>
+            <p>{{productDetails.createdAt | date}}</p>
             <div class="d-flex justify-content-between text-muted">
-                <span>{{productDetails.price}} EGP</span>
+                <span>{{productDetails.price | currency}} EGP</span>
                 <span>
                     <i class="fa-solid fa-star rating-color"></i>
                     {{productDetails.ratingsAverage}}
