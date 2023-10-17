@@ -31,6 +31,11 @@ const routes: Routes = [
   {path:'wishlist', canActivate:[authguardGuard], component:WishlistComponent},
   {path:'mycart', canActivate:[authguardGuard], component:MycartComponent},
   {path:'checkout', canActivate:[authguardGuard], component:CheckoutComponent},
+  {path:'changePassword', loadChildren:()=>{
+    return import('./settings/settings.module').then((m)=>{
+      return m.SettingsModule
+    })
+  }},
   {path:'**', component:NotfoundComponent},
 ];
 
