@@ -29,7 +29,6 @@ export class SigninComponent {
               this._Auth.decodedUserToken();
               this._Router.navigate(['/home']);
           }
-          console.log(response);
           this.isLoading = false
         },
         error:(err)=>{

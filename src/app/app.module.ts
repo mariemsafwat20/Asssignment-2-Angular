@@ -27,6 +27,7 @@ import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
 import { AddTitlePipe } from './add-title.pipe';
 import { SearchPipe } from './search.pipe';
 import { LoaderComponent } from './loader/loader.component';
+import { LoaderInterceptor } from './loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,11 @@ import { LoaderComponent } from './loader/loader.component';
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AddHeaderInterceptor,
+      multi: true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoaderInterceptor,
       multi: true
     }
   ],
