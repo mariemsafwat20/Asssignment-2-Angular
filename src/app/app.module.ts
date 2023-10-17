@@ -26,6 +26,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { AddHeaderInterceptor } from './interceptor/add-header.interceptor';
 import { AddTitlePipe } from './add-title.pipe';
 import { SearchPipe } from './search.pipe';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SearchPipe } from './search.pipe';
     ResetPasswordComponent,
     CheckoutComponent,
     AddTitlePipe,
-    SearchPipe
+    SearchPipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
