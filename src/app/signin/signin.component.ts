@@ -22,7 +22,7 @@ export class SigninComponent {
   
     signin(formData:FormGroup){
       this.isLoading = true;  
-      this._Auth.login(this.loginForm.value).subscribe({
+      this._Auth.login(formData.value).subscribe({
         next:(response)=>{
           if(response.message == 'success'){
               localStorage.setItem('userToken',response.token);
@@ -33,7 +33,6 @@ export class SigninComponent {
         },
         error:(err)=>{
           this.errMessage = err.error.message;
-          console.log(this.errMessage)
           this.isLoading = false
         }
       })
