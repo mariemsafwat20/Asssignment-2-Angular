@@ -1,12 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { ProductsComponent } from './products/products.component';
-import { BrandsComponent } from './brands/brands.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { ProfileComponent } from './profile/profile.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
@@ -23,12 +18,7 @@ const routes: Routes = [
   {path:'forgotPassword', component:ForgotPasswordComponent},
   {path:'resetPassword',component:ResetPasswordComponent},
   {path:'home', canActivate:[authguardGuard], component:HomeComponent},
-  {path:'category', canActivate:[authguardGuard], component:CategoriesComponent},
-  {path:'products', canActivate:[authguardGuard], component:ProductsComponent},
   {path:'details/:id', canActivate:[authguardGuard], component:ProductDetailsComponent},
-  {path:'brands', canActivate:[authguardGuard], component:BrandsComponent},
-  {path:'profile', canActivate:[authguardGuard], component:ProfileComponent},
-  {path:'wishlist', canActivate:[authguardGuard], component:WishlistComponent},
   {path:'mycart', canActivate:[authguardGuard], component:MycartComponent},
   {path:'checkout', canActivate:[authguardGuard], component:CheckoutComponent},
   {path:'changePassword', loadChildren:()=>{
@@ -36,6 +26,12 @@ const routes: Routes = [
       return m.SettingsModule
     })
   }},
+  // StandAlone Component with lazy loading
+  {path:'category',canActivate:[authguardGuard],loadComponent:()=>import('./categories/categories.component').then((c)=>c.CategoriesComponent)},
+  {path:'brands',canActivate:[authguardGuard],loadComponent:()=>import('./brands/brands.component').then((c)=>c.BrandsComponent)},
+  {path:'products',canActivate:[authguardGuard],loadComponent:()=>import('./products/products.component').then((c)=>c.ProductsComponent)},
+  {path:'profile',canActivate:[authguardGuard],loadComponent:()=>import('./profile/profile.component').then((c)=>c.ProfileComponent)},
+  {path:'wishlist',canActivate:[authguardGuard],loadComponent:()=>import('./wishlist/wishlist.component').then((c)=>c.WishlistComponent)},
   {path:'**', component:NotfoundComponent},
 ];
 
